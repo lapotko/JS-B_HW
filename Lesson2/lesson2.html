@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="lesson2.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+      body {
+        font-family: "PT Sans", sans-serif;
+      }
+      p {
+        font-size: 1.5em;
+        line-height: 1.5;
+      }
+      button {
+        width: 200px;
+        height: 100px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      <h2>Задание 1</h2>
+
+      <p>Почему код даёт такие результаты:</p>
+      <p>
+        <code>var a = 1, b = 1, c, d; c = ++a; alert(c);</code><br />
+        Результат = 2, потому что ++а это префиксная запись. К "а" сначала
+        делается инкремент, а потом идёт присваивание;<br /><br />
+        <code>d = b++; alert(d);</code><br />
+        Результат = 1, т.к. запись постфиксная и сначала идёт присваивание, а
+        потом инкремент. Т.е. на момент "alert" b = 2;<br /><br />
+        <code>c = (2+ ++a); alert(c);</code><br />
+        Результат = 5, т.к. запись префиксная и на момент прибавления 2 "а" =
+        3;<br /><br />
+        <code>d = (2+ b++); alert(d);</code> <br />
+        Результат = 4, т.к. запись постфиксная. На момент операции "b" = 2, а
+        после сложения к ней добавляется инкремент, поэтому в момент "alert" b =
+        3<br /><br />
+        <code>alert(a);</code> // 3. логичный итог всех вышеприведенных операций <br />
+        <code>alert(b);</code> // 3. логичный итог всех вышеприведенных операций 
+      </p>
+    </div>
+    <hr />
+    <div class="text">
+      <h2>Задание 2</h2>
+      <p>Чему будет равен код:</p>
+      <p>
+        <code>var a = 2; var x = 1 + (a *= 2);<br /></code>
+        <h3>Решение:</h3>
+        <p>
+            Код будет равен 5
+        </p>
+      </p>
+    </div>
+
+    <h2>Задание 3</h2>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        function task_3 (a,b){<br />
+        var a = +prompt('Введите первую цифру');<br />
+        var b = +prompt('Введите вторую цифру');<br />
+        if(a>=0 && b>=0){<br />
+        alert('Разность чисел: '+(a - b));<br />
+        }else if(a<0&&b<0){<br />
+        alert('Произведение чисел: '+(a*b));<br />
+        }else { alert('Сумма чисел: '+(a+b));<br />
+        }<br />
+
+        }<br />
+      </code>
+    </p>
+    <button onclick="task_3()">Проверка кода</button>
+    <hr />
+    <h2>
+      Задание 4.Присвоить переменной а значение в промежутке [0..15]. С помощью
+      оператора switch организовать вывод чисел от a до 15.
+    </h2>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        function task_4 (){<br />
+        var rnd = +((Math.random()*15).toFixed (0));<br />
+        alert (rnd);<br />
+        switch(rnd){<br />
+        case 1:<br />
+        alert('1 2 3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        case 2:<br />
+        alert('2 3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 3:<br />
+        alert('3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 4:<br />
+        alert('4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 5:<br />
+        alert('5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 6:<br />
+        alert('6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 7:<br />
+        alert('7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 8:<br />
+        alert('8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 9:<br />
+        alert('9 10 11 12 13 14 15');<br />
+        break<br />
+        case 10:<br />
+        alert('10 11 12 13 14 15');<br />
+        break<br />
+        case 11:<br />
+        alert('11 12 13 14 15');<br />
+        break<br />
+        case 12:<br />
+        alert('12 13 14 15');<br />
+        break<br />
+        case 13:<br />
+        alert('13 14 15');<br />
+        break<br />
+        case 14:<br />
+        alert('14 15');<br />
+        break<br />
+        case 15:<br />
+        alert('15');<br />
+        break<br />
+        } }
+      </code>
+    </p>
+    <button onclick="task_4()">Проверка кода</button>
+    <hr />
+    <h2>
+      Задание 5. Реализовать основные 4 арифметические операции в виде функций с
+      двумя параметрами.
+    </h2>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        function mathAddition(a,b){<br />
+        var addResult = +a+(+b);<br />
+        return;<br />
+        }<br />
+        function mathSubtraction(a,b){<br />
+        var subResult = a-b;<br />
+        return;<br />
+        }<br />
+        function mathMultiplication(a,b){<br />
+        var multResult = a*b;<br />
+        return;<br />
+        }<br />
+        function mathDivision(a,b){<br />
+        var divResult = a/b;<br />
+        return;<br />
+        }<br />
+      </code>
+    </p>
+  </body>
+</html>
