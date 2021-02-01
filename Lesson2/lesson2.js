@@ -121,6 +121,21 @@ function mathOperation(arg1, arg2, operation){
       }
   }
 
+// Задание 8*. Рекурсия
+  function power(val,pow){
+    if (pow == 1){
+      return val;
+    }
+      else{
+        return val*power(val, pow-1);
+      }
+    }
+    
+    function task_8(){
+      var x = +prompt('Введите число');
+      var y = +prompt('Введите степень');
+      alert ('Результат вычисления: '+(power(x,y)));
+    }
   
     
     
