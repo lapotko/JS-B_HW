@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="lesson2.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+      body {
+        font-family: "PT Sans", sans-serif;
+      }
+      h2{
+        font-size: 1.8em;
+      }
+      h3{
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1.5em;
+        line-height: 1.5;
+      }
+      button {
+        width: 200px;
+        height: 100px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+      <h2>Задание 1. Почему код даёт именно такие результаты?</h2>
+      <p>
+        <code>var a = 1, b = 1, c, d; c = ++a; alert(c);</code><br />
+        Результат = 2, потому что ++а это префиксная запись. К "а" сначала
+        делается инкремент, а потом идёт присваивание;<br /><br />
+        <code>d = b++; alert(d);</code><br />
+        Результат = 1, т.к. запись постфиксная и сначала идёт присваивание, а
+        потом инкремент. Т.е. на момент "alert" b = 2;<br /><br />
+        <code>c = (2+ ++a); alert(c);</code><br />
+        Результат = 5, т.к. запись префиксная и на момент прибавления 2 "а" =
+        3;<br /><br />
+        <code>d = (2+ b++); alert(d);</code> <br />
+        Результат = 4, т.к. запись постфиксная. На момент операции "b" = 2, а
+        после сложения к ней добавляется инкремент, поэтому в момент "alert" b =
+        3<br /><br />
+        <code>alert(a);</code> // 3. логичный итог всех вышеприведенных операций <br />
+        <code>alert(b);</code> // 3. логичный итог всех вышеприведенных операций 
+      </p>
+<hr />
+      <h2>Задание 2. Чему будет равен x в примере ниже?</h2>
+      <p>
+        <code>var a = 2; var x = 1 + (a *= 2);<br /></code>
+        <h3>Решение:</h3>
+        <p>
+            Код будет равен 5
+        </p>
+      </p>
+<hr>
+    <h2>Задание 3. Объявить две целочисленные переменные a и b и задать им произвольные начальные значения. Затем написать скрипт, который работает по следующему принципу:</h2>
+    <p>если a и b положительные, вывести их разность;<br>
+      если а и b отрицательные, вывести их произведение;<br>
+      если а и b разных знаков, вывести их сумму; ноль можно считать положительным числом.</p>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        var a = +prompt('Введите первую цифру');<br />
+        var b = +prompt('Введите вторую цифру');<br />
+        if(a>=0 && b>=0){<br />
+        alert('Разность чисел: '+(a - b));<br />
+        }else if(a<0&&b<0){<br />
+        alert('Произведение чисел: '+(a*b));<br />
+        }else { alert('Сумма чисел: '+(a+b));<br />
+        }<br />
+
+        }<br />
+      </code>
+    </p>
+    <button onclick="task_3()">Проверка кода</button>
+    <hr />
+    <h2>
+      Задание 4. Присвоить переменной а значение в промежутке [0..15]. С помощью
+      оператора switch организовать вывод чисел от a до 15.
+    </h2>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        var rnd = +((Math.random()*15).toFixed (0));<br />
+        alert (rnd);<br />
+        switch(rnd){<br />
+        case 1:<br />
+        alert('1 2 3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        case 2:<br />
+        alert('2 3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 3:<br />
+        alert('3 4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 4:<br />
+        alert('4 5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 5:<br />
+        alert('5 6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 6:<br />
+        alert('6 7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 7:<br />
+        alert('7 8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 8:<br />
+        alert('8 9 10 11 12 13 14 15');<br />
+        break<br />
+        case 9:<br />
+        alert('9 10 11 12 13 14 15');<br />
+        break<br />
+        case 10:<br />
+        alert('10 11 12 13 14 15');<br />
+        break<br />
+        case 11:<br />
+        alert('11 12 13 14 15');<br />
+        break<br />
+        case 12:<br />
+        alert('12 13 14 15');<br />
+        break<br />
+        case 13:<br />
+        alert('13 14 15');<br />
+        break<br />
+        case 14:<br />
+        alert('14 15');<br />
+        break<br />
+        case 15:<br />
+        alert('15');<br />
+        break<br />
+        } }
+      </code>
+    </p>
+    <button onclick="task_4()">Проверка кода</button>
+<hr />
+    <h2>
+      Задание 5. Реализовать основные 4 арифметические операции в виде функций с
+      двумя параметрами.
+    </h2>
+    <h3>Решение:</h3>
+    <p>
+      <code>
+        function mathAddition(a,b){<br>
+          var addResult = (+a+(+b));<br>
+          alert ('Сумма чисел = '+(addResult));<br>
+          return addResult;<br>
+        }<br>
+        function mathSubtraction(a,b){<br>
+          var subResult = (a-b);<br>
+          alert ('Разность чисел = '+(subResult));<br>
+          return subResult;<br>
+        }<br>
+        function mathMultiplication(a,b){<br>
+          var multResult = (a*b);<br>
+          alert ('Результат умножения = '+(multResult));<br>
+          return multResult;<br>
+        }<br>
+        function mathDivision(a,b){<br>
+          var divResult = (a/b).toFixed(2);<br>
+          alert ('Результат деления = '+(divResult));<br>
+          return divResult;<br>
+        }
+      </code>
+    </p>
+<hr>
+<h2>
+  Задание 6.  Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (использовать switch).
+</h2>
+<h3>Решение:</h3>
+<p>
+  <code>
+    function mathOperation(arg1, arg2, operation){<br>
+      var operation = prompt('Введите символ желаемой математической операции (например: / (деление), * (умножение), + (сложение)  - (вычитание)');<br>
+        if (operation=="/"){<br>
+          arg1=+prompt('Введите делимое число');<br>
+          arg2=+prompt('Введите делитель');<br>
+        }<br>
+          else if(operation=="-"){<br>
+            arg1=+prompt('Введите уменьшаемое число');<br>
+            arg2=+prompt('Введите вычитаемое число');<br>
+          }<br>
+          else{<br>
+            arg1=+prompt('Введите первое число');<br>
+            arg2=+prompt('Введите второе число');<br>
+          }<br>
+          switch(operation){<br>
+            case "*":<br>
+              mathMultiplication(arg1, arg2);<br>
+              break;<br>
+            case "/":<br>
+              mathDivision(arg1,arg2);<br>
+              break;<br>
+            case "-":<br>
+              mathSubtraction(arg1,arg2);<br>
+              break;<br>
+            case "+":<br>
+              mathAddition(arg1,arg2);<br>
+              break;<br>
+          }<br>
+      }<br>
+  </code>
+</p>
+<button onclick="mathOperation()">Проверка кода</button>
+<hr>
+<button onclick="task_8()">Рекурсия</button>
+  </body>
+</html>
