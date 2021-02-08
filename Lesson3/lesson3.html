@@ -7,6 +7,7 @@
   </head>
   <body>
     <button onclick="task_1()">Задание 1. Простые числа</button>
+    <button onclick="task_2()">Задание 2. Сумма корзины</button>
     <script>
       function task_1() {
         function simpleNum(input) {
@@ -32,6 +33,60 @@
           x++;
         }
         alert("Проверьте консоль :)");
+      }
+
+      function task_2() {
+        var goods = [
+          {
+            title: "Товар 1",
+            price: "100",
+            count: 3,
+          },
+          {
+            title: "Товар 2",
+            price: "500",
+            count: 1,
+          },
+          {
+            title: "Товар 3",
+            price: "200",
+            count: 2,
+          },
+        ];
+        function f(mas) {
+          var sum = 0;
+          for (var item of mas) {
+            sum = sum + item.price * item.count;
+          }
+          return sum;
+        }
+        console.log(f(goods));
+
+        /*var basket = [];
+        while (1) {
+          var title = prompt("Введите название");
+          if (title == "end") {
+            break;
+          }
+          var price = prompt("Введите цену");
+          var count = prompt("Введите количество");
+          var good = {
+            title: title,
+            price: price,
+            count: count,
+          };
+          basket.push(good);
+        }
+
+        function total(mas) {
+          var sum = 0;
+          for (item of mas) {
+            sum = sum + item.price * item.count;
+          }
+          return sum;
+        }
+        console.log("Сумма товаров в корзине " + total(basket));
+      } */
       }
     </script>
   </body>
