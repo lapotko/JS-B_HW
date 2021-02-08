@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="task_1()">Задание 1. Простые числа</button>
+    <script>
+      function task_1() {
+        function simpleNum(input) {
+          var initialDivider = 2;
+          if (input == 2) {
+            return true;
+          } else {
+            for (; initialDivider < input; initialDivider++) {
+              if (input % initialDivider == 0) {
+                return false;
+                break;
+              }
+            }
+          }
+          return true;
+        }
+
+        var x = 2;
+        while (x <= 100) {
+          if (simpleNum(x)) {
+            console.log(x);
+          }
+          x++;
+        }
+        alert("Проверьте консоль :)");
+      }
+    </script>
+  </body>
+</html>
