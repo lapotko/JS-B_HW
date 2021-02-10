@@ -20,14 +20,30 @@
     </style>
   </head>
   <body>
-    <button onclick="#">Код</button>
-    <script src="#">
+    <button onclick="">Код</button>
+    <script>
       var car = {
-          make: "Lada",
-          model: "Largus",
-          power: 106
+        make: "Lada",
+        model: "Largus",
+        power: 106,
+        odometer: 0,
+        engineIsStarted: false,
+        startEngine: function () {
+          this.engineIsStarted = true;
+        },
+        stopEngine: function () {
+          this.engineIsStarted = false;
+        },
+        haveRoadTrip: function (distance) {
+          if (engineIsStarted) {
+            odometer += distance;
+          } else {
+            alert("Сначала запуститу двигатель!");
+          }
+        },
       };
       console.log(car.model);
+      car.startEngine();
     </script>
   </body>
 </html>
