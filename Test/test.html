@@ -20,30 +20,54 @@
     </style>
   </head>
   <body>
-    <button onclick="">Код</button>
     <script>
-      var car = {
-        make: "Lada",
-        model: "Largus",
-        power: 106,
-        odometer: 0,
-        engineIsStarted: false,
-        startEngine: function () {
-          this.engineIsStarted = true;
-        },
-        stopEngine: function () {
-          this.engineIsStarted = false;
-        },
-        haveRoadTrip: function (distance) {
-          if (engineIsStarted) {
-            odometer += distance;
+      function decompose(number) {
+        if (number > 0 && number <= 999) {
+          var masNumber = number.split("");
+
+          if (masNumber.length < 2) {
+            masNumber = {
+              units: masNumber[0],
+            };
+          } else if (masNumber.length < 3) {
+            masNumber = {
+              dozens: masNumber[0],
+              units: masNumber[1],
+            };
           } else {
-            alert("Сначала запуститу двигатель!");
+            masNumber = {
+              hundreds: masNumber[0],
+              dozens: masNumber[1],
+              units: masNumber[2],
+            };
           }
-        },
-      };
-      console.log(car.model);
-      car.startEngine();
+          /* switch (masNumber) {
+            case masNumber.length < 2:
+              masNumber = {
+                units: masNumber[0],
+              };
+            case masNumber.length < 3:
+              masNumber = {
+                dozens: masNumber[0],
+                units: masNumber[1],
+              };
+            case masNumber == 3:
+              masNumber = {
+                hundreds: masNumber[0],
+                dozens: masNumber[1],
+                units: masNumber[2],
+              };
+          } */
+        } else if (number > 999 || isNaN(number)) {
+          console.log("Вы ввели что-то не то :)");
+          masNumber = {};
+        }
+        console.log(masNumber);
+      }
+
+      var b = prompt("Enter a value");
+
+      decompose(b);
     </script>
   </body>
 </html>
