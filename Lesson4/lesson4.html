@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Задание 1
+      function decompose(number) {
+        if (number > 0 && number <= 999) {
+          var masNumber = number.split("");
+
+          if (masNumber.length < 2) {
+            masNumber = {
+              units: masNumber[0],
+            };
+          } else if (masNumber.length < 3) {
+            masNumber = {
+              dozens: masNumber[0],
+              units: masNumber[1],
+            };
+          } else {
+            masNumber = {
+              hundreds: masNumber[0],
+              dozens: masNumber[1],
+              units: masNumber[2],
+            };
+          }
+          /* switch (masNumber) {
+            case masNumber.length < 2:
+              masNumber = {
+                units: masNumber[0],
+              };
+            case masNumber.length < 3:
+              masNumber = {
+                dozens: masNumber[0],
+                units: masNumber[1],
+              };
+            case masNumber == 3:
+              masNumber = {
+                hundreds: masNumber[0],
+                dozens: masNumber[1],
+                units: masNumber[2],
+              };
+          } */
+        } else if (number > 999 || isNaN(number)) {
+          console.log("Вы ввели что-то не то :)");
+          masNumber = {};
+        }
+        console.log(masNumber);
+      }
+
+      var b = prompt("Enter a value");
+
+      decompose(b);
+    </script>
+  </body>
+</html>
