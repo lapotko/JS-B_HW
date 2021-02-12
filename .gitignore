@@ -1,3 +1,4 @@
 *.zip 
 test.*
 !/Test/test.html
+.txt
