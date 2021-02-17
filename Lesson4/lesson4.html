@@ -10,7 +10,30 @@
     <script>
       //Задание 1
       function decompose(number) {
+        i = {};
         if (number > 0 && number <= 999) {
+          switch (number.length) {
+            case 1:
+              i.units = number[0];
+              break;
+            case 2:
+              i.dozens = number[0];
+              i.units = number[1];
+              break;
+            case 3:
+              i.hundreds = number[0];
+              i.dozens = number[1];
+              i.units = number[2];
+              break;
+          }
+        } else if (number <= 0 || number > 999 || isNaN(number)) {
+          console.log("Вы ввели что-то не то :)");
+          i = {};
+        }
+
+        console.log(i);
+
+        /* if (number > 0 && number <= 999) {
           var masNumber = number.split("");
 
           if (masNumber.length < 2) {
@@ -29,28 +52,12 @@
               units: masNumber[2],
             };
           }
-          /* switch (masNumber) {
-            case masNumber.length < 2:
-              masNumber = {
-                units: masNumber[0],
-              };
-            case masNumber.length < 3:
-              masNumber = {
-                dozens: masNumber[0],
-                units: masNumber[1],
-              };
-            case masNumber == 3:
-              masNumber = {
-                hundreds: masNumber[0],
-                dozens: masNumber[1],
-                units: masNumber[2],
-              };
-          } */
+
         } else if (number > 999 || isNaN(number)) {
           console.log("Вы ввели что-то не то :)");
           masNumber = {};
         }
-        console.log(masNumber);
+        console.log(masNumber); */
       }
 
       var b = prompt("Enter a value");
