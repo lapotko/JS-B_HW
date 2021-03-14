@@ -6,5 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div id="x"></div>
+    <script>
+      // Построение таблицы
+
+      var table = document.createElement("table");
+      var tr, td, i, index;
+      index = 1;
+      for (i = 1; i <= 8; i++) {
+        tr = document.createElement("tr");
+        if (i % 2 == 0) {
+          tr.setAttribute("class", "even");
+        } else {
+          tr.setAttribute("class", "odd");
+        }
+        table.append(tr);
+        for (j = 1; j <= 8; j++, index++) {
+          td = document.createElement("td");
+
+          tr.append(td);
+          td.innerText = index;
+        }
+      }
+      // Вывели таблицу на экран:
+      document.querySelector("div").append(table);
+      // Раскрашиваем клетки:
+      var evenRow = document.getElementsByClassName("even");
+      for (i = 0; i < evenRow.length; i++) {
+        for (j = 0; j < evenRow[i].cells.length; j++) {
+          if (j % 2 == 0) {
+            evenRow[i].cells[j].style.background = "black";
+          } else {
+            evenRow[i].cells[j].style.background = "gray";
+          }
+        }
+      }
+      var oddRow = document.getElementsByClassName("odd");
+      for (i = 0; i < oddRow.length; i++) {
+        for (j = 0; j < oddRow[i].cells.length; j++) {
+          if (j % 2 == 0) {
+            oddRow[i].cells[j].style.background = "gray";
+          } else {
+            oddRow[i].cells[j].style.background = "black";
+          }
+        }
+      }
+      //Делаем цифры сбоку
+
+      var index_left_column = document.createElement("td");
+
+      document.querySelector("table tr").append(index_left_column);
+      index_left_column.innerText = "x";
+
+      // Создаём нижний ряд букв:
+      var charset = ["A", "B", "C", "D", "E", "F", "G", "H"];
+      var lowestRowOfChar = document.createElement("tr");
+      for (i = 0; i < 8; i++) {
+        var td_Of_LowestRow = document.createElement("td");
+        lowestRowOfChar.append(td_Of_LowestRow);
+        td_Of_LowestRow.innerText = charset[i];
+      }
+      table.append(lowestRowOfChar);
+      // Создаём верхний ряд букв:
+      var upperRowOfChar = document.createElement("tr");
+      for (i = 0; i < 8; i++) {
+        var td_Of_UpperRow = document.createElement("td");
+        upperRowOfChar.append(td_Of_UpperRow);
+        td_Of_UpperRow.innerText = charset[i];
+        td_Of_UpperRow.style.transform = "rotate(180deg)";
+      }
+      table.prepend(upperRowOfChar);
+    </script>
+  </body>
 </html>
