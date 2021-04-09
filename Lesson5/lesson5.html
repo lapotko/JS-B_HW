@@ -7,76 +7,143 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="x"></div>
     <script>
-      // Построение таблицы
+      function chessboard() {
+        // Построение таблицы:
 
-      var table = document.createElement("table");
-      var tr, td, i, index;
-      index = 1;
-      for (i = 1; i <= 8; i++) {
-        tr = document.createElement("tr");
-        if (i % 2 == 0) {
-          tr.setAttribute("class", "even");
-        } else {
-          tr.setAttribute("class", "odd");
-        }
-        table.append(tr);
-        for (j = 1; j <= 8; j++, index++) {
-          td = document.createElement("td");
-
-          tr.append(td);
-          td.innerText = index;
-        }
-      }
-      // Вывели таблицу на экран:
-      document.querySelector("div").append(table);
-      // Раскрашиваем клетки:
-      var evenRow = document.getElementsByClassName("even");
-      for (i = 0; i < evenRow.length; i++) {
-        for (j = 0; j < evenRow[i].cells.length; j++) {
-          if (j % 2 == 0) {
-            evenRow[i].cells[j].style.background = "black";
+        var table = document.createElement("table");
+        var tr, td, i;
+        for (i = 1; i <= 8; i++) {
+          tr = document.createElement("tr");
+          if (i % 2 == 0) {
+            tr.setAttribute("class", "even");
           } else {
-            evenRow[i].cells[j].style.background = "gray";
+            tr.setAttribute("class", "odd");
+          }
+          table.append(tr);
+          for (j = 1; j <= 8; j++) {
+            td = document.createElement("td");
+
+            //Определяем ряды для фигур:
+
+            if (i <= 2 || (i > 6 && i <= 8)) {
+              td.classList.add("pieceCell");
+            }
+            tr.append(td);
           }
         }
-      }
-      var oddRow = document.getElementsByClassName("odd");
-      for (i = 0; i < oddRow.length; i++) {
-        for (j = 0; j < oddRow[i].cells.length; j++) {
-          if (j % 2 == 0) {
-            oddRow[i].cells[j].style.background = "gray";
-          } else {
-            oddRow[i].cells[j].style.background = "black";
+        // Вывели таблицу на экран:
+
+        document.querySelector("body").append(table);
+        table.style.cssText = `
+      border: 1px solid black;
+      width: 600px;
+      height: 600px;
+      text-align: center;
+      vertical-align: center;
+      font-size: 32px;
+      `;
+
+        // Раскрашиваем клетки:
+
+        const blackColor = "#8B4513";
+        const whiteColor = "#DCDCDC";
+        var evenRow = document.getElementsByClassName("even");
+        for (i = 0; i < evenRow.length; i++) {
+          for (j = 0; j < evenRow[i].cells.length; j++) {
+            if (j % 2 == 0) {
+              evenRow[i].cells[j].style.background = blackColor;
+            } else {
+              evenRow[i].cells[j].style.background = whiteColor;
+            }
           }
         }
-      }
-      //Делаем цифры сбоку
+        var oddRow = document.getElementsByClassName("odd");
+        for (i = 0; i < oddRow.length; i++) {
+          for (j = 0; j < oddRow[i].cells.length; j++) {
+            if (j % 2 == 0) {
+              oddRow[i].cells[j].style.background = whiteColor;
+            } else {
+              oddRow[i].cells[j].style.background = blackColor;
+            }
+          }
+        }
 
-      var index_left_column = document.createElement("td");
+        //Делаем цифры справа:
 
-      document.querySelector("table tr").append(index_left_column);
-      index_left_column.innerText = "x";
+        var arrayOfRow = document.querySelectorAll("tr");
+        var digitСharset = ["1", "2", "3", "4", "5", "6", "7", "8"];
+        for (i = 0; i < arrayOfRow.length; i++) {
+          var rightIndex = document.createElement("td");
+          arrayOfRow[i].append(rightIndex);
+          rightIndex.innerText = digitСharset[i];
+          rightIndex.style.transform = "rotate(180deg)";
+        }
+        // Делаем цифры слева:
 
-      // Создаём нижний ряд букв:
-      var charset = ["A", "B", "C", "D", "E", "F", "G", "H"];
-      var lowestRowOfChar = document.createElement("tr");
-      for (i = 0; i < 8; i++) {
-        var td_Of_LowestRow = document.createElement("td");
-        lowestRowOfChar.append(td_Of_LowestRow);
-        td_Of_LowestRow.innerText = charset[i];
+        for (i = 0; i < arrayOfRow.length; i++) {
+          var leftIndex = document.createElement("td");
+          arrayOfRow[i].prepend(leftIndex);
+          leftIndex.innerText = digitСharset[i];
+        }
+        // Создаём нижний ряд букв:
+
+        var charset = ["", "A", "B", "C", "D", "E", "F", "G", "H"];
+        var lowestRowOfChar = document.createElement("tr");
+        for (i = 0; i < 9; i++) {
+          var tdOfLowestRow = document.createElement("td");
+          lowestRowOfChar.append(tdOfLowestRow);
+          tdOfLowestRow.innerText = charset[i];
+        }
+        table.append(lowestRowOfChar);
+
+        // Создаём верхний ряд букв:
+
+        var upperRowOfChar = document.createElement("tr");
+        for (i = 0; i < 9; i++) {
+          var tdOfUpperRow = document.createElement("td");
+          upperRowOfChar.append(tdOfUpperRow);
+          tdOfUpperRow.innerText = charset[i];
+          tdOfUpperRow.style.transform = "rotate(180deg)";
+        }
+        table.prepend(upperRowOfChar);
+
+        //Заполняем клетки фигурами
+
+        var pieces = [
+          "&#9814;", //ладья
+          "&#9816;", //конь
+          "&#9815", //офицер
+          "&#9819;", //ферзь
+          "&#9818;", //король
+          "&#9815", //офицер
+          "&#9816;", //конь
+          "&#9814;", //ладья
+        ];
+        var piecesCells = document.getElementsByClassName("pieceCell");
+
+        // Делаем белые фигуры:
+
+        for (i = 0; i <= 7; i++) {
+          piecesCells[i].innerHTML = pieces[i];
+          piecesCells[i].style.color = "#FFFFE0";
+        }
+        for (i = 8; i < 16; i++) {
+          piecesCells[i].innerHTML = "&#9823;"; //пешки создаем отдельно (без массива)
+          piecesCells[i].style.color = "#FFFFE0";
+        }
+        //Делаем черные фигуры:
+
+        for (i = 16; i < 24; i++) {
+          piecesCells[i].innerHTML = "&#9823;";
+        }
+        var j = 0;
+        for (i = 24; i <= 32; i++, j++) {
+          piecesCells[i].innerHTML = pieces[j];
+        }
       }
-      table.append(lowestRowOfChar);
-      // Создаём верхний ряд букв:
-      var upperRowOfChar = document.createElement("tr");
-      for (i = 0; i < 8; i++) {
-        var td_Of_UpperRow = document.createElement("td");
-        upperRowOfChar.append(td_Of_UpperRow);
-        td_Of_UpperRow.innerText = charset[i];
-        td_Of_UpperRow.style.transform = "rotate(180deg)";
-      }
-      table.prepend(upperRowOfChar);
+
+      chessboard();
     </script>
   </body>
 </html>
