@@ -1,0 +1,14 @@
+#gallery,
+#pic_gallery h2 {
+  text-align: center;
+}
+#big_picture {
+  display: none;
+
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+}
+#big_picture img {
+  height: inherit;
+}
