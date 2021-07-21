@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/gallery.js"></script>
+    <script defer src="js/shop.js"></script>
+    <script defer src="js/pic_slider.js"></script>
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+  </head>
+  <body>
+    <div id="pic_gallery">
+      <h2>Галлерея</h2>
+      <div id="big_picture"></div>
+      <div id="gallery">
+        <img id="image_1" src="small_pic/DSC_0.jpg" alt="image" />
+        <img id="image_2" src="small_pic/DSC_1.jpg" alt="image" />
+        <img id="image_3" src="small_pic/DSC_2.jpg" alt="image" />
+      </div>
+    </div>
+    <!-- Задание "Магазин" -->
+    <div id="shop">
+      <h2>Магазин</h2>
+      <div class="cart">
+        <h3>Корзина</h3>
+        <p id="cartSum">Корзина пуста</p>
+      </div>
+      <div id="catalog"></div>
+    </div>
+    <!-- Задание "Слайдер" -->
+    <div
+      style="margin-top: 20px; height: 160px; text-align: center"
+      id="slider"
+    >
+      <h2>Слайдер</h2>
+      <button onclick="previous()">предыдущий</button>
+      <img src="small_pic/DSC_0.jpg" alt="flowers" />
+      <img style="display: none" src="small_pic/DSC_1.jpg" alt="still life" />
+      <img style="display: none" src="small_pic/DSC_2.jpg" alt="net" />
+      <button onclick="next()">следующий</button>
+    </div>
+  </body>
+</html>

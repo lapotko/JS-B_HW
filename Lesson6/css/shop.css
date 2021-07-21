@@ -1,0 +1,12 @@
+h2 {
+  text-align: center;
+}
+#catalog {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+#cartContent {
+  height: 100px;
+  width: 50%;
+}
