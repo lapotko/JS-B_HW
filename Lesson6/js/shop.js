@@ -3,18 +3,18 @@ var goods = [
   {
     name: 'Товар 1',
     price: 20,
-    img: '/small_pic/DSC_0.jpg'
+    img: 'small_pic/DSC_0.jpg'
     
   },
   { name: 'Товар 2',
     price: 30,
-    img: '/small_pic/DSC_1.jpg'
+    img: 'small_pic/DSC_1.jpg'
     
   },
   {
     name: 'Товар 3',
     price: 10,
-    img: '/small_pic/DSC_2.jpg'
+    img: 'small_pic/DSC_2.jpg'
   }
 
 ]
