@@ -113,31 +113,21 @@ function move() {
 
     // Определяем новую точку
     if (direction == 'x-') {
-        if(coord_x == 0){
-            coord_x = 20;
-        }
         new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x - 1))[0];
     }
     else if (direction == 'x+') {
-        if(coord_x == 19){
-            coord_x = -1;
-        }
         new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x + 1))[0];
     }
     else if (direction == 'y+') {
-        if(coord_y == 0){
-            coord_y = 20;
-        }
         new_unit = document.getElementsByClassName('cell-' + (coord_y - 1) + '-' + (coord_x))[0];
         
     }
     else if (direction == 'y-') {
-        if(coord_y == 19){
-            coord_y = -1;
-        }
         new_unit = document.getElementsByClassName('cell-' + (coord_y + 1) + '-' + (coord_x))[0];
     }
-
+    if(new_unit == undefined){
+        new_unit = loopingDirection(coord_x, coord_y);
+    }
     // Проверки
     // 1) new_unit не часть змейки
     // 2) Змейка не столкнулась с препятствием
@@ -162,7 +152,27 @@ function move() {
         finishTheGame();
     }
 }
-
+/**Убираем границы поля (зацикливаем направление движения)
+ * @param coord_x @param coord_y
+ * @returns unit
+ */
+function loopingDirection (coord_x, coord_y){
+    var unit;
+    if (direction == 'x-') {
+        unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (FIELD_SIZE_X - 1))[0];
+    }
+    else if (direction == 'x+') {
+        unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (0))[0];
+    }
+    else if (direction == 'y+') {
+        unit = document.getElementsByClassName('cell-' + (FIELD_SIZE_Y - 1) + '-' + (coord_x))[0];
+        
+    }
+    else if (direction == 'y-') {
+        unit = document.getElementsByClassName('cell-' + (0) + '-' + (coord_x))[0];
+    }
+    return unit;
+}
 /**
  * Проверка на змейку
  * @param unit
@@ -248,13 +258,12 @@ function createBlock() {
         var block_cell = document.getElementsByClassName('cell-' + block_y + '-' + block_x)[0];
         var block_cell_classes = block_cell.getAttribute('class').split(' ');
 
-        // проверка на змейку
-        if (!block_cell_classes.includes('snake-unit')) {
+        // проверка на змейку и на "еду"
+        if (!block_cell_classes.includes('snake-unit')  ) {
             var blockClasses = '';
             for (var i = 0; i < block_cell_classes.length; i++) {
                 blockClasses += block_cell_classes[i] + ' ';
             }
-
             block_cell.setAttribute('class', blockClasses + 'block-unit');
             blockCreated = true;
         }
