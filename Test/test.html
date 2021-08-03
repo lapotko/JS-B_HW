@@ -8,6 +8,38 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      // /**
+      //  * Если переменной присвоить функцию то она сама станет функцией, или ФУНКЦИОНАЛЬНЫМ ВЫРАЖЕНИЕМ
+      //  * Проверить это можно через оператор typeof (sum);
+      //  */
+      // var sum = function (a, b) {
+      //   return a + b;
+      // };
+      // alert(sum(1, 2));
+      // /**
+      //  * Если функция это переменная, то её можно передать параметром в другую функцию
+      //  */
+      // function func(a) {
+      //   alert(a(5, 7));
+      // }
+      // func(sum);
+      var users = [
+        {
+          login: "admin",
+          pass: "12345",
+        },
+        {
+          login: "user",
+          pass: "123",
+        },
+      ];
+      function User(login, pass) {
+        login = this.login;
+        pass = this.pass;
+      }
+      var user1 = new User(user1, 1234);
+      console.log(user1);
+    </script>
   </body>
 </html>
