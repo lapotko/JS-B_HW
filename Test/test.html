@@ -24,7 +24,10 @@
       //   alert(a(5, 7));
       // }
       // func(sum);
-      var users = [
+
+      /**Конструктор объекта
+       */
+      /* var users = [
         {
           login: "admin",
           pass: "12345",
@@ -35,11 +38,45 @@
         },
       ];
       function User(login, pass) {
-        login = this.login;
-        pass = this.pass;
+        this.login = login;
+        this.pass = pass;
+        this.access = false;
+        this.show = function () {
+          if (this.check() == true) {
+            alert("Есть доступ");
+          } else {
+            alert("Access denied");
+          }
+        };
+        this.check = function () {
+          for (var item of users) {
+            if (item.login == login && item.pass == pass) {
+              this.access = true;
+              break;
+            }
+          }
+          return this.access;
+        };
       }
-      var user1 = new User(user1, 1234);
-      console.log(user1);
+      var login = prompt("Ваш логин?");
+      var pass = prompt("Ваш пароль?");
+      var user1 = new User(login, pass);
+      user1.show(); */
+
+      /**Область видимости
+       */
+      /*   var phone = 1;
+      if (true) {
+        var phone = 2;
+        console.log(phone); //2
+      }
+      console.log(phone); */ //2
+      /* let phone = 1;
+      if (true) {
+        let phone = 2;
+        console.log(phone); //2
+      }
+      console.log(phone); //1 */
     </script>
   </body>
 </html>
