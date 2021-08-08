@@ -8,6 +8,7 @@
     <title>Document</title>
   </head>
   <body>
+    <button>OK</button>
     <script>
       // /**
       //  * Если переменной присвоить функцию то она сама станет функцией, или ФУНКЦИОНАЛЬНЫМ ВЫРАЖЕНИЕМ
@@ -25,58 +26,136 @@
       // }
       // func(sum);
 
-      /**Конструктор объекта
+      /**КОНСТРУКТОР ОБЪЕКТА
        */
       /* var users = [
-        {
-          login: "admin",
-          pass: "12345",
-        },
-        {
-          login: "user",
-          pass: "123",
-        },
-      ];
-      function User(login, pass) {
-        this.login = login;
-        this.pass = pass;
-        this.access = false;
-        this.show = function () {
-          if (this.check() == true) {
-            alert("Есть доступ");
-          } else {
-            alert("Access denied");
-          }
-        };
-        this.check = function () {
-          for (var item of users) {
-            if (item.login == login && item.pass == pass) {
-              this.access = true;
-              break;
-            }
-          }
-          return this.access;
-        };
-      }
-      var login = prompt("Ваш логин?");
-      var pass = prompt("Ваш пароль?");
-      var user1 = new User(login, pass);
-      user1.show(); */
+         {
+           login: "admin",
+           pass: "12345",
+         },
+         {
+           login: "user",
+           pass: "123",
+         },
+       ];
+       function User(login, pass) {
+         this.login = login;
+         this.pass = pass;
+         this.access = false;
+         this.show = function () {
+           if (this.check() == true) {
+             alert("Есть доступ");
+           } else {
+             alert("Access denied");
+           }
+         };
+         this.check = function () {
+           for (var item of users) {
+             if (item.login == login && item.pass == pass) {
+               this.access = true;
+               break;
+             }
+           }
+           return this.access;
+         };
+       }
+       var login = prompt("Ваш логин?");
+       var pass = prompt("Ваш пароль?");
+       var user1 = new User(login, pass);
+       user1.show(); */
 
-      /**Область видимости
+      /**ОБЛАСТЬ ВИДИМОСТИ (отличия var от let)
        */
       /*   var phone = 1;
-      if (true) {
-        var phone = 2;
-        console.log(phone); //2
-      }
-      console.log(phone); */ //2
+       if (true) {
+         var phone = 2;
+         console.log(phone); //2
+       }
+       console.log(phone); */ //2
       /* let phone = 1;
-      if (true) {
-        let phone = 2;
-        console.log(phone); //2
-      }
-      console.log(phone); //1 */
+       if (true) {
+         let phone = 2;
+         console.log(phone); //2
+       }
+       console.log(phone); //1 */
+
+      /** ВЛОЖЕННЫЕ ФУНКЦИИ
+       */
+      window.onload = function () {
+        /*  document.querySelector("button").onclick = f; //Примечание. При присваивании функции событию, св-ву или атрибуту, никогда не ставим скобки, иначе ф-ция будет вызвана немедленно!
+       };
+       function f() {
+         console.log(this); */
+        //
+        /* var name = "Igor";
+         document.querySelector("button").onclick = function () {
+           alert(name);
+         }; */
+        //
+        /* function outer() {
+           //чтобы при вызове внешней ф-ции получать результат внутренней, необходимо внутреннюю ф. вызывать во внешней
+           var x = 1;
+           function inner() {
+             var y = 2;
+             alert(x + y);
+           }
+           inner();
+         }
+         outer(); */
+      };
+
+      /** ЗАМЫКАНИЯ
+       Замыкание - это способность функции запоминать контент, в котором она определена и обращаться к этому контенту в процессе вызова
+      */
+      //
+      /* function createCounter() {
+         var x = 0;
+         return function () {
+           return ++x;
+         };
+       }
+       var test = createCounter();
+
+       console.log(test()); //1
+       console.log(test()); //2
+       console.log(test()); //3
+       //Используя функцию внутри функции можно запоминать каждый её вызов
+       // Вопрос: почему при каждом вызове функции переменная х не переопределяется?
+       // Ответ: потому что при обращении к переменной во внешней функции из внутренней, JS запрещает её переопределять. */
+      //
+      /* function calc(a) {
+         return function (b) {
+           return a + b;
+         };
+       }
+       var addNumberFive = calc(5); // <= В присвоении функции переменной мы указываем параметр "а"
+       console.log(addNumberFive(15)); // <= а в вызове указываем параметр "b"
+       console.log(addNumberFive(25)); */
+      //
+      /* function createUrl(domain) {
+         return function (url) {
+           return `http://${url}.${domain}`;
+         };
+       }
+       let ru = createUrl("ru");
+       console.log(ru("yandex"));
+       console.log(ru("mail")); */
+      //
+      /* var c = 0;
+       function f() {
+         return function () {
+           return function () {
+             return ++c;
+           };
+         };
+       }
+       console.log(f()()()); //для вызова последней вложенной функции нужно указать количество скобок равное количеству функций; */
+      //
+      /**
+       * Стрелочная функция
+       */
+      //  var sum = (a,b) => (a+b); //после "=" идут параметры, после стрелки тело функции
+      //
     </script>
   </body>
 </html>
